@@ -1,4 +1,5 @@
 import express from 'express'
+import producer from './producer'
 const app = express()
 const port = 3000
 
@@ -12,4 +13,6 @@ app.listen(port, () => {
 
 app.get('/producer', (req, res) => {
     res.send('<html><b>Hello Producer!<b></html>')
+    const p = new producer();
+    p.create("{\"m\":\"message\"}")
   })

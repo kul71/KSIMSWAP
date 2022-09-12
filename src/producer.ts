@@ -1,7 +1,8 @@
-import express from 'express'
-
-export default function producer() {
-    function reply (req, res){
-        res.send('Hello Producer!');
+export default class producer {
+    create(msg:string) {
+        console.log(msg);
+        const omsg =  JSON.parse(msg);
+        console.log(omsg);
     }
 }
+export {};
