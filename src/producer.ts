@@ -1,5 +1,5 @@
 import Kafka from "node-rdkafka"
-import * as confconfig from "../confluent-properties.json"
+import * as confconfig from "./confluent-properties.json"
 
 function createConfigMap(config: any) {
   if (config.hasOwnProperty('security.protocol')) {
@@ -22,8 +22,8 @@ function createConfigMap(config: any) {
 
 function createProducer(onDeliveryReport: any): Promise<Kafka.Producer> {
 
-  const confconfig1 = createConfigMap(confconfig);
-  console.log(confconfig1);
+  const confconfig1 = createConfigMap(confconfig)
+  console.log(confconfig1)
 
   const producer = new Kafka.Producer(confconfig1)
 
@@ -32,29 +32,30 @@ function createProducer(onDeliveryReport: any): Promise<Kafka.Producer> {
       .on('ready', () => resolve(producer))
       .on('delivery-report', onDeliveryReport)
       .on('event.error', (err) => {
-        console.warn('event.error', err);
-        reject(err);
+        console.warn('event.error', err)
+        reject(err)
       });
-    producer.connect();
+    producer.connect()
   });
 }
 
 export default async function produceExample() {
 
-  let topic = "SIMSWAP";
+  let topic = "SIMSWAP"
 
-  let users = ["eabara", "jsmith", "sgarcia", "jbernard", "htanaka", "awalther"];
-  let items = ["book", "alarm clock", "t-shirts", "gift card", "batteries"];
+  let users = ["eabara", "jsmith", "sgarcia", "jbernard", "htanaka", "awalther"]
+  let items = ["book", "alarm clock", "t-shirts", "gift card", "batteries"]
 
   const producer = await createProducer((err: string, report: any) => {
     if (err) {
       console.warn('Error producing', err)
     } else {
-      const { topic, key, value } = report;
+      console.log(report)
+      const { topic, key, value } = report
       let k = key.toString().padEnd(10, ' ')
       console.log(`Produced event to topic ${topic}: key = ${k} value = ${value}`)
     }
-  });
+  })
 
   let numEvents = 10
   let idx = Math.floor(Math.random() * items.length)

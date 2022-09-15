@@ -1,5 +1,7 @@
 import express from 'express'
 import createMsg from './testModule'
+import produceExample from "./producer"
+
 const app = express()
 const port = 3000
 
@@ -13,5 +15,10 @@ app.listen(port, () => {
 
 app.get('/producer', (req, res) => {
   res.send('<html><b>Hello Producer!<b></html>')
-  createMsg('{"m":"message"}')
+  // createMsg('{"m":"message"}')
+  produceExample()
+    .catch((err) => {
+      console.error(`Something went wrong:\n${err}`);
+    });
+
 })
