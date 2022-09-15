@@ -15,3 +15,5 @@ npm ERR! gyp ERR! find Python You need to install the latest version of Python.
 >>https://github.com/Blizzard/node-rdkafka/blob/master/README.md#mac-os-high-sierra--mojave
 
 -----------
+https://stackoverflow.com/questions/52121725/maintain-src-folder-structure-when-building-to-dist-folder-with-typescript-3
+-----------
