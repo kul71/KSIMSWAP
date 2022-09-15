@@ -17,3 +17,6 @@ npm ERR! gyp ERR! find Python You need to install the latest version of Python.
 -----------
 https://stackoverflow.com/questions/52121725/maintain-src-folder-structure-when-building-to-dist-folder-with-typescript-3
 -----------
+https://www.npmjs.com/package/ts-jest
+https://www.testim.io/blog/node-js-unit-testing-get-started-quickly-with-examples/
+-------------
